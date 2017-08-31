@@ -1,3 +1,7 @@
+本文来自：阮一峰
+git：https://github.com/ruanyf/react-demos
+blog:http://www.ruanyifeng.com/blog/2015/03/react.html
+
 This is a collection of simple demos of React.js.
 
 These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful library.
