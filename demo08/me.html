@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var LikeButton = React.createClass({
+            getInitialState: function() {
+                return {myset: false}; // 这个变量的名字可以自定义
+            },
+            myClick: function(event) {
+              this.setState({myset: !this.state.myset});
+            },
+            render: function() {
+                var text = this.state.myset ? 'like' : 'haven\'t liked';
+                // 您可以使用组件属性来注册事件处理程序，
+                // 就像onClick，onKeyDown，onCopy等。
+                // 官方文档都支持所有事件。
+                return (
+                <p onClick={this.myClick}>
+                    You {text} this. Click to toggle.
+                </p>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <LikeButton />,
+            document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>
+

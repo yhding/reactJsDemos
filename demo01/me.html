@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script> <!-- 核心文件-->
+    <script src="../build/react-dom.js"></script><!-- 封装的DOM文件-->
+    <script src="../build/browser.min.js"></script><!-- 解析jsx模板文件-->
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">  // 识别为模板文件（jsx文件）
+      ReactDOM.render(
+        <h1>Hello, React!</h1>, // 模板
+        document.getElementById('example') // 放到这里来 
+      );
+    </script>
+  </body>
+</html>

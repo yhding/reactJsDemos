@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var NodeList = React.createClass({ // 必须大写
+            render: function() {
+                return (
+                    <ol>
+                    {
+                        React.Children.map(this.props.children, function(child){
+                            // 这里的this.propschildren 有三种值
+                            // undefined
+                            // object
+                            // array
+                            return <li>{child}</li>
+                        })
+                    }
+                    </ol>
+                )
+            }
+        });
+        ReactDOM.render(
+            // 上面不能加HTML标记 ？
+            <NodeList>
+                <span>测试有多条数据的情况1</span>
+                <span>测试有多条数据的情况2</span>
+            </NodeList>,
+            // 下面不能加NodeList标记 ？
+
+
+
+            // <h1>测试有多条数据的情况</h1>,
+            // <NodeList>
+            //     <span>测试有多条数据的情况1</span>
+            //     <span>测试有多条数据的情况2</span>
+            // </NodeList>,
+
+            // <h1>测试有一条数据的情况</h1>,
+            // <NodeList>
+            //     <span>测试有一条数据的情况1</span>
+            // </NodeList>,
+
+            // <h1>测试有零条数据的情况</h1>,
+            // <NodeList></NodeList>,
+            document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>

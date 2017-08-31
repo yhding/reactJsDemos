@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var AjaxGrid = React.createClass({
+          getInitialState: function() {
+              return {
+                username: '',
+                lastGistUrl: ''
+              };
+          },
+          componentDidMount: function() {
+              // $.get(url, {}, function(){})
+              $.get(this.props.source, function(res){ // 可以传多个参数吗？怎么写？
+                var lastGist = res[0];
+                if(this.isMounted()){
+                    this.setState({
+                        username: lastGist.owner.login,
+                        lastGistUrl: lastGist.html_url
+                    });
+                }
+              }.bind(this));
+          },
+          render: function() {
+              return (
+                  <div>
+                    {this.state.username}'s last gist is <a href={this.state.lastGistUrl}>here</a>.
+                  </div>
+              )
+          }
+      });
+      ReactDOM.render(
+          <AjaxGrid source="aa.json" />, // 这里需要自己开服务，我使用的是node里的anywhere轻量级服务 
+          // 参考文档： https://www.npmjs.com/package/anywhere
+          document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
